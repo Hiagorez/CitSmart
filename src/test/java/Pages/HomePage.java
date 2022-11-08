@@ -7,8 +7,9 @@ import br.com.servicostic.BasePage;
 
 public class HomePage extends BasePage {
 	
-	private By OptionsAcess = By.xpath("//*[@id=\\\"formlogin\\\"]/div[2]/div/div/div/div/span");
-
+	private By LocalizadorCitsLocal = By.xpath("//*[@id=\"formlogin\"]/div[2]/div/div/div/div/span");
+	private By CitsLocal = By.xpath("//*[@id=\"formlogin\"]//a[@onclick=\"LOGIN.domains.setDomain('citsmart.local');\"]");
+	
 	public HomePage(WebDriver driver) {
 		super(driver);
 	}
@@ -19,7 +20,9 @@ public class HomePage extends BasePage {
 	}
 
 	public void LocalAcess() {
-		driver.findElement(OptionsAcess).click();
+		driver.findElement(LocalizadorCitsLocal).click();
+		driver.findElement(CitsLocal).click();
+		
 	}
 }
 
