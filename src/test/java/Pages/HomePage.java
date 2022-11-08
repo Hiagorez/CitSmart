@@ -1,14 +1,19 @@
 package Pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 import br.com.servicostic.BasePage;
 
 public class HomePage extends BasePage {
 	
-	private By LocalizadorCitsLocal = By.xpath("//*[@id=\"formlogin\"]/div[2]/div/div/div/div/span");
-	private By CitsLocal = By.xpath("//*[@id=\"formlogin\"]//a[@onclick=\"LOGIN.domains.setDomain('citsmart.local');\"]");
+	
+	@FindBy(xpath = "//*[@id=\\\"formlogin\\\"]/div[2]/div/div/div/div/span")
+	private WebElement CitsLocal;
+	
+	@FindBy(xpath = "//*[@id=\"formlogin\"]//a[@onclick=\"LOGIN.domains.setDomain('citsmart.local');\"]")
+	private WebElement BotaoCitsLocal;
 	
 	public HomePage(WebDriver driver) {
 		super(driver);
@@ -20,8 +25,8 @@ public class HomePage extends BasePage {
 	}
 
 	public void LocalAcess() {
-		driver.findElement(LocalizadorCitsLocal).click();
-		driver.findElement(CitsLocal).click();
+		CitsLocal.click();
+		BotaoCitsLocal.click();
 		
 	}
 }
