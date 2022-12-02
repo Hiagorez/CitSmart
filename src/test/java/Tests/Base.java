@@ -2,9 +2,6 @@ package Tests;
 
 import java.time.Duration;
 
-import org.junit.Test;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,24 +11,15 @@ import Pages.HomePage;
 import Pages.LoginPage;
 
 @DisplayName("Testes Automatizados Sing Up")
-public class SignUpTests {
+public class Base {
 
-	private WebDriver driver;
 	
-	@BeforeEach
-	public void setUp() {
-		// Abrir o navegador
-		driver = new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
-	}
-
-	@Test
-	@DisplayName("Registrar novo usuário")
+	WebDriver driver = new ChromeDriver();
+	
 	public void TesteLoginUsuário() {
 
 		// Abrir site
 		HomePage homePage = new HomePage(driver);
-		homePage.AcessarSite();
 		homePage.LocalAcess();
 
 		// Realizar o Login
@@ -42,11 +30,7 @@ public class SignUpTests {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
 		AcessoAoSistema acessoAoSistema = new AcessoAoSistema(driver);
 		acessoAoSistema.AcessarSistema();
-
+		acessoAoSistema.AcessarTicket();
 	}
 
-	@AfterEach
-	public void tearDown() {
-		driver.quit();
-	}
 }

@@ -1,29 +1,23 @@
 package Pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 import br.com.servicostic.BasePage;
 
 public class LoginPage extends BasePage{
 	
-	@FindBy(id = "user_login")
-	private WebElement LoginInicial;
-	
-	@FindBy(id = "password")
-	private WebElement SenhaInicial;
-	
-	@FindBy(id = "btnEntrar")
-	private WebElement BotaoEnter;
+	private By LoginInicial = By.id("user_login");
+	private By SenhaInicial = By.id("password");
+	private By BotaoEnter = By.id("btnEntrar");
 	
 	public LoginPage (WebDriver driver) {
-		super (driver);
+		super(driver);
 	}
 
-	public void Login(String Login, String senha) {
-		LoginInicial.sendKeys(Login);
-		SenhaInicial.sendKeys(senha);
-		BotaoEnter.click();
+	public void Login(String login, String senha) {
+		driver.findElement(LoginInicial).sendKeys(login);
+		driver.findElement(SenhaInicial).sendKeys(senha);
+		driver.findElement(BotaoEnter).click();
 	}
 }
